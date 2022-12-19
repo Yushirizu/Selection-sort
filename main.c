@@ -4,46 +4,47 @@
 int main()
 {
     int tab[20] = {78,40,84,12,86,22,42,44,82,77,96,54,70,59,37,95,4,49,63,27};
-    int enCours, ppt, deplac, temp,i;
+    int enCours, smallest, movement, temp,i;
 
-    printf("TABLEAU NON TRIE\n");
+    printf("UNSORTED TABLE\n");
 
     for(i = 0; i<=19;i++){
-        printf("Valeur  [%d] : %d\n",i,tab[i]);
+        printf("Value  [%d] : %d\n",i,tab[i]);
     }
 
 
-    for (enCours=0; enCours < 20; enCours++){
+    for (inCourse=0; inCourse < 20; inCourse++){
 
-        /*On commence par la première valeur du tableau et celle-ci devient la valeur la plus petite : la valeur en cours devient la valeur la plus petite*/
+        /*We start with the first value of the array and this becomes the smallest value: the current value becomes the smallest value*/
 
-        ppt = enCours;
+        smallest = inCourse;
 
-        /*pour i = de en cours à 19 si la valeur du tableau de en cours est plus petite notre valeur plus petite on dis que la valeur plus petite est égal à la position à la quelle on est c'est à dire en cours mais on doit garder en cours*/
+        /*for i = from current to 19 if the array value of current is smaller than our smaller value we say that the smaller value is equal
+        to the position at which we are current but we must keep current*/
 
-        for(deplac=enCours ; deplac<20; deplac++){
+        for(movement=inCourse ; movement<20; movement++){
 
-            if(tab[deplac] < tab [ppt]){
+            if(tab[movement] < tab [smallest]){
 
-                ppt = deplac;
+                smallest = movement;
 
             }
 
         }
 
-       /*on échange en cours et plus petit*/
+       /*we exchange in progress and smaller*/
 
-    temp = tab[enCours];
-    tab[enCours] = tab[ppt];
-    tab[ppt] = temp;
+    temp = tab[inCourse];
+    tab[inCourse] = tab[smallest];
+    tab[smallest] = temp;
 
 
     }
 
-    printf("TABLEAU TRIE\n");
+    printf("SORT TABLE\n");
 
     for(i = 0; i<=19;i++){
-        printf("Valeur  [%d] : %d\n",i,tab[i]);
+        printf("Value  [%d] : %d\n",i,tab[i]);
     }
 
 }
