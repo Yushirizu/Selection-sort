@@ -1,50 +1,50 @@
 #include <stdio.h>
-#include <stdlib.h>
 
+// Function to swap two integers
+void swap(int *a, int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+// Selection sort function
+void selection_sort(int arr[], int n)
+{
+    int i, j, min_idx;
+
+    // One by one move boundary of unsorted subarray
+    for (i = 0; i < n-1; i++)
+    {
+        // Find the minimum element in unsorted array
+        min_idx = i;
+        for (j = i+1; j < n; j++)
+          if (arr[j] < arr[min_idx])
+            min_idx = j;
+
+        // Swap the found minimum element with the first element
+        swap(&arr[min_idx], &arr[i]);
+    }
+}
+
+// Function to print an array
+void print_array(int arr[], int size)
+{
+    int i;
+    for (i=0; i < size; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+
+// Driver program to test above functions
 int main()
 {
-    int tab[20] = {78,40,84,12,86,22,42,44,82,77,96,54,70,59,37,95,4,49,63,27};
-    int enCours, smallest, movement, temp,i;
+    int arr[] = {64, 25, 12, 22, 11};
+    int n = sizeof(arr)/sizeof(arr[0]);
 
-    printf("UNSORTED TABLE\n");
+    selection_sort(arr, n);
+    printf("Sorted array: \n");
+    print_array(arr, n);
 
-    for(i = 0; i<=19;i++){
-        printf("Value  [%d] : %d\n",i,tab[i]);
-    }
-
-
-    for (inCourse=0; inCourse < 20; inCourse++){
-
-        /*We start with the first value of the array and this becomes the smallest value: the current value becomes the smallest value*/
-
-        smallest = inCourse;
-
-        /*for i = from current to 19 if the array value of current is smaller than our smaller value we say that the smaller value is equal
-        to the position at which we are current but we must keep current*/
-
-        for(movement=inCourse ; movement<20; movement++){
-
-            if(tab[movement] < tab [smallest]){
-
-                smallest = movement;
-
-            }
-
-        }
-
-       /*we exchange in progress and smaller*/
-
-    temp = tab[inCourse];
-    tab[inCourse] = tab[smallest];
-    tab[smallest] = temp;
-
-
-    }
-
-    printf("SORT TABLE\n");
-
-    for(i = 0; i<=19;i++){
-        printf("Value  [%d] : %d\n",i,tab[i]);
-    }
-
+    return 0;
 }
